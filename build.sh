@@ -4,7 +4,7 @@ set -euo pipefail
 # Build main program
 mkdir -p build
 
-pushd build
+pushd build >/dev/null
 
 cc_common_flags="-std=c99 -pedantic-errors"
 cc_debug_flags="-g -O0"
@@ -23,11 +23,11 @@ gcc $cc_all_flags $cc_includes $cc_sources $cc_libs -o logging-tool
   echo "["
   sep=""
   for src in $cc_sources; do
-    printf '%s {\n    "directory": "%s",\n    "file": "%s",\n    "command": "gcc %s %s -c %s"\n  }' \
+    printf '%s  {\n    "directory": "%s",\n    "file": "%s",\n    "command": "gcc %s %s -c %s"\n  }' \
       "$sep" "$(pwd)" "$src" "$cc_all_flags" "$cc_includes" "$src"
     sep=$',\n'
   done
   printf '\n]\n'
 } >compile_commands.json
 
-popd
+popd /dev/null
