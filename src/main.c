@@ -1,15 +1,14 @@
 #include <stdio.h>
+#include "logging_tool.h"
 
 int main(int argc, char* argv[]) {
   // Unused
   (void)argc;
   (void)argv;
 
-  printf("Hello World!\n");
-  int number = 0;
-  while (number < 42) {
-    number += 5;
-  }
-  printf("The number is: %d", number);
+  int a = 10;
+  int b = 16;
+  printf("a + b = %d\n", add(a, b));
+  printf("a frobnicate b = %d", frobnicate(a, b));
   return 0;
 }
