@@ -1,4 +1,5 @@
 #!/bin/env bash
+set -euo pipefail
 
 # Build main program
 mkdir -p build
