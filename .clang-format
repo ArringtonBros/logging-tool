@@ -1,0 +1,11 @@
+---
+# Start with Google style
+BasedOnStyle: Google
+
+SortIncludes: Never
+IndentWidth: 2
+ColumnLimit: 80
+UseTab: Never
+PointerAlignment: Left
+MaxEmptyLinesToKeep: 1
+...
