@@ -2,17 +2,24 @@
 
 This directory contains everything needed to run a self-hosted GitHub Actions
 runner in a Docker container on a local Linux machine (written for Arch Linux).
-It is used to run the `pre-commit` check on pull requests before they can be
-merged into `main`.
+It runs the checks that pull requests must pass before they can be merged into
+`main`:
+
+| Workflow | Check |
+| --- | --- |
+| `.github/workflows/pre-commit.yml` | `pre-commit run --all-files` |
+| `.github/workflows/build.yml` | `./build.sh` succeeds and produces `build/logging-tool` |
 
 The runner is **ephemeral**: each job runs in a fresh runner registration, and
 the container restarts after every job so no state is carried between jobs.
+Because there is a single runner, the checks for a pull request run one after
+another rather than in parallel.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `Dockerfile` | Builds on `ghcr.io/actions/actions-runner` (GitHub's official image) and adds `git` and `pre-commit` |
+| `Dockerfile` | Builds on `ghcr.io/actions/actions-runner` (GitHub's official image) and adds `git`, `gcc` and `pre-commit` |
 | `entrypoint.sh` | Exchanges the PAT for a short-lived registration token, registers an ephemeral runner, then starts it |
 | `docker-compose.yml` | Defines the runner service (restart policy, dropped capabilities, no-new-privileges) |
 | `start.sh` | Helper script to start, stop and inspect the runner from your PC |
@@ -62,7 +69,7 @@ ci/github-runner/start.sh stop       # stop and remove the container
 
 After `start`, the logs should show "Listening for Jobs", and the runner
 appears as **Idle** under **Settings → Actions → Runners** with the label
-`docker-ci`.
+`github-runner`.
 
 To use a token file in a different location:
 
