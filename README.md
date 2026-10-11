@@ -2,6 +2,7 @@
 
 ## Ideology
 
+- 100% MC/DC test coverage
 - Zero dependencies
 - Simplicity
 - [tigerstyle](https://tigerstyle.dev/)
