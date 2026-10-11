@@ -1,2 +1,6 @@
 # Build directory
 build/
+
+# Environment files for CI
+.env
+*.env

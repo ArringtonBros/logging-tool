@@ -1,0 +1,13 @@
+services:
+  runner:
+    build: .
+    restart: unless-stopped
+    environment:
+      REPO: mjarring/logging-tool
+      ACCESS_TOKEN: ${GH_PAT}
+      RUNNER_NAME: arch-docker-runner
+      RUNNER_LABELS: github-runner
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
