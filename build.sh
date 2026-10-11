@@ -1,16 +1,15 @@
 #!/bin/env bash
 set -euo pipefail
 
+# shellcheck source=flags.sh
+source "$(dirname "${BASH_SOURCE[0]}")/flags.sh"
+
 # Build main program
 mkdir -p build
 
 pushd build >/dev/null
 
-cc_common_flags="-std=c99 -pedantic-errors"
-cc_debug_flags="-g -O0"
-cc_warning_flags="-Wall -Wextra -Wc99-c11-compat -Wstrict-prototypes -Wmissing-prototypes -Wshadow -Werror=implicit-function-declaration"
-cc_posix_flags="-D_POSIX_C_SOURCE=200112L"
-cc_all_flags="$cc_common_flags $cc_debug_flags $cc_warning_flags $cc_posix_flags"
+cc_all_flags="$cc_base_flags $cc_debug_flags"
 
 cc_sources="../src/main.c ../src/logging_tool.c"
 cc_libs=""
