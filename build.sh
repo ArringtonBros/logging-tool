@@ -30,4 +30,4 @@ gcc $cc_all_flags $cc_includes $cc_sources $cc_libs -o logging-tool
   printf '\n]\n'
 } >compile_commands.json
 
-popd /dev/null
+popd >/dev/null
