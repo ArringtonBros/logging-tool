@@ -35,7 +35,7 @@ Commands:
 `coverage.sh` uses `gcc` and `gcov` from `PATH`. Set `CC` and `GCOV` to use
 others, for example `CC=gcc-14 GCOV=gcov-14 ./coverage.sh`.
 
-CI builds with Ubuntu's gcc 13, so a newer local gcc may accept code that CI
+CI builds with gcc 14, so a newer local gcc may accept code that CI
 rejects. Treat the CI build as the reference.
 
 ### Fedora (distrobox)

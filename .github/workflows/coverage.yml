@@ -1,0 +1,16 @@
+name: Coverage-Check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  coverage:
+    # Only run on PRs from this repo, never from forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, github-runner]
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./coverage.sh
