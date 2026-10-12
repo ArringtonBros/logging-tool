@@ -1,6 +1,4 @@
-#include "logging_tool.h"
-
-int add(int a, int b) { return a + b; }
+#include "frobnicate.h"
 
 int frobnicate(int a, int b) {
   if (a < b) {

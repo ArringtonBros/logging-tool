@@ -11,7 +11,7 @@ pushd build >/dev/null
 
 cc_all_flags="$cc_base_flags $cc_debug_flags"
 
-cc_sources="../src/main.c ../src/logging_tool.c"
+cc_sources="../src/main.c ../src/frobnicate.c"
 cc_libs=""
 cc_includes="-I../src"
 
