@@ -3,7 +3,7 @@ services:
     build: .
     restart: unless-stopped
     environment:
-      REPO: mjarring/logging-tool
+      REPO: ArringtonBros/logging-tool
       ACCESS_TOKEN: ${GH_PAT}
       RUNNER_NAME: arch-docker-runner
       RUNNER_LABELS: github-runner
