@@ -9,6 +9,7 @@ It runs the checks that pull requests must pass before they can be merged into
 | --- | --- |
 | `.github/workflows/pre-commit.yml` | `pre-commit run --all-files` |
 | `.github/workflows/build.yml` | `./build.sh` succeeds and produces `build/logging-tool` |
+| `.github/workflows/coverage.yml` | `./coverage.sh` succeeds` |
 
 The runner is **ephemeral**: each job runs in a fresh runner registration, and
 the container restarts after every job so no state is carried between jobs.

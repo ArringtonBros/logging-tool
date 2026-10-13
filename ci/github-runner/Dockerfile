@@ -2,8 +2,10 @@ FROM ghcr.io/actions/actions-runner:2.338.0
 
 USER root
 RUN apt-get update \
- && apt-get install -y --no-install-recommends git gcc libc6-dev python3 python3-venv jq curl ca-certificates \
+ && apt-get install -y --no-install-recommends git gcc-14 libc6-dev python3 python3-venv jq curl ca-certificates \
  && rm -rf /var/lib/apt/lists/* \
+ && ln -s /usr/bin/gcc-14 /usr/local/bin/gcc \
+ && ln -s /usr/bin/gcov-14 /usr/local/bin/gcov \
  && python3 -m venv /opt/precommit \
  && /opt/precommit/bin/pip install --no-cache-dir pre-commit \
  && ln -s /opt/precommit/bin/pre-commit /usr/local/bin/pre-commit
